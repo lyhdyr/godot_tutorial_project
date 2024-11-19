@@ -1,8 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://bj3hvlv0mtqhd"]
+[gd_scene load_steps=3 format=3 uid="uid://bj3hvlv0mtqhd"]
 
+[ext_resource type="Texture2D" uid="uid://cny4paj27t308" path="res://assets/art/parallax.png" id="1_ib0ny"]
 [ext_resource type="PackedScene" uid="uid://dyovlwktfpbwu" path="res://scenes/player.tscn" id="1_j3pl6"]
 
 [node name="Game" type="Node2D"]
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(648, 480)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+offset_right = 648.0
+offset_bottom = 480.0
+texture = ExtResource("1_ib0ny")
+
 [node name="Player" parent="." instance=ExtResource("1_j3pl6")]
 position = Vector2(318, 195)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
