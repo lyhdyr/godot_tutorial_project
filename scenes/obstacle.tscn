@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://bwfvmljtltud"]
+
+[ext_resource type="Texture2D" uid="uid://cayeaw7lf5an3" path="res://assets/art/spiral.png" id="1_88u8k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c53xu"]
+atlas = ExtResource("1_88u8k")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htael"]
+atlas = ExtResource("1_88u8k")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_deqls"]
+atlas = ExtResource("1_88u8k")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wf2s"]
+atlas = ExtResource("1_88u8k")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l0h58"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c53xu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htael")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_deqls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wf2s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2tojw"]
+radius = 18.0278
+
+[node name="Obstacle" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_l0h58")
+autoplay = "default"
+frame_progress = 0.447095
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2tojw")
+debug_color = Color(0.95337, 0.178146, 0.321303, 0.42)
