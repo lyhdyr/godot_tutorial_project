@@ -14,3 +14,8 @@ func _physics_process(delta: float) -> void:
 # Destroys the obstacle when timeout is reached
 func _on_timer_timeout() -> void:
 	queue_free()
+
+
+func _on_body_entered(body: Node2D) -> void:
+	print("Game over!")
+	get_tree().reload_current_scene()

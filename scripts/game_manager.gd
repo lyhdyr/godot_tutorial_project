@@ -2,8 +2,12 @@ class_name GameManager extends Node2D
 
 var viewport_dim : Vector2 # This will store the viewport size
 var offset : float = 0 # An extra we add to the viewport size
+var time : int
+var stored_delta : float
 
 @onready var player: Player = %Player # A reference to the Player
+@onready var label: Label = $CanvasLayer/Label # Time label
+
 
 const OBSTACLE := preload("res://scenes/obstacle.tscn") # Preloads the Obstacle scene
 
@@ -14,7 +18,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	stored_delta += delta #delta are milliseconds
+	if stored_delta >= 1.0: #one second
+		time += 1
+		stored_delta = 0.0
+		label.set_text("%02d:%02d" % [time / 60, time % 60])
 
 # Called every time the Timer reaches timeout
 func _on_timer_timeout() -> void:
