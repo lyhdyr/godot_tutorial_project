@@ -24,6 +24,7 @@ position = Vector2(318, 195)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
 autostart = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -32,8 +33,8 @@ autostart = true
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.5
-offset_right = 20.5
+offset_left = -20.0
+offset_right = 21.0
 offset_bottom = 23.0
 grow_horizontal = 2
 text = "00:00"
