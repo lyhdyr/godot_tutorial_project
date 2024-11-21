@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bj3hvlv0mtqhd"]
+[gd_scene load_steps=4 format=3 uid="uid://bj3hvlv0mtqhd"]
 
 [ext_resource type="Texture2D" uid="uid://cny4paj27t308" path="res://assets/art/parallax.png" id="1_ib0ny"]
 [ext_resource type="PackedScene" uid="uid://dyovlwktfpbwu" path="res://scenes/player.tscn" id="1_j3pl6"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_uei6r"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_uei6r")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -16,6 +18,12 @@ offset_bottom = 480.0
 texture = ExtResource("1_ib0ny")
 
 [node name="Player" parent="." instance=ExtResource("1_j3pl6")]
+unique_name_in_owner = true
 position = Vector2(318, 195)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
